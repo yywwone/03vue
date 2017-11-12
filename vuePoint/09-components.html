@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>组件的了解和使用</h1>
+        <hello></hello>
+
+        <hello></hello>
+
+        <my-component>1111</my-component>
+
+
+     </div> 
+     <div id="app1">
+            <my-component>1111</my-component>
+    </div>  
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+      Vue.component('myComponent',{
+          data:function () {
+            return {
+                name:'name'
+            }
+          },
+          template:'<h1>myComponent组件----{{name}}</h1>'
+      })
+
+      var vm1 = new Vue({
+          el:'#app1'
+      })
+
+      var vm = new Vue({
+          el: '#app',
+          data:function () {
+              return {
+                  msg:'哈哈'
+              }
+          },
+          // 这里用来定义各个私有组件
+          // 定义组件需要有两个参数:
+          // 1.组件的名称
+          // 2.组件的内容
+          components: {
+              'hello': {
+                  template: '<h1>这是template</h1>'
+              },
+              'world': {
+                  template: '<h1>这是template</h1>'
+              }
+          }
+      })
+    </script>
+</body>
+</html>

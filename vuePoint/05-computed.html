@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+
+        <input type="text" v-model="msg">
+        <input type="text" v-model="name">
+
+        {{myMsg}}
+        {{myName}}
+    </div>
+
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+     var vm = new Vue({
+         el:'#app',
+         data:function () {
+             return {
+                msg:'你好',
+                name:'hello'
+             }
+         },
+         // 计算属性
+         // 参数一: 名称,
+         // 参数而 :方法体
+         computed:{
+             // 计算属性中可以添加方法,也可以添加对象
+            myMsg: function () {
+                return this.msg + '.heima'
+            },
+            myName:{
+               set:function (val) {
+                 this.name = val
+               },
+               get:function () {
+                return this.name + '.heima'
+               }
+            }
+         }
+     })
+
+     // 最好使用computed,不要使用watch,原因:
+     // computed有缓存机制,watch没有
+    </script>
+</body>
+</html>

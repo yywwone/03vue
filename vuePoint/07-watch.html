@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <input type="text" v-model="msg">
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            // 可以这样写,但是不推荐:
+            // data:{
+
+            // },
+            data: function () {
+                return {
+                    msg:'你好中国'
+                }
+            },
+            // watch提供了一个观察的方式,用于监听data中数据的变化
+            watch:{
+                // 两个参数:
+                // 1: 你要观察对象的名称,
+                // 2: 你要采取的措施
+                'msg':function () {
+                    window.alert(11111)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

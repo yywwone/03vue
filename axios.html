@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="hello">按钮</button>
+        <button v-on:click="world">男女</button>
+        <button v-on:click="haha">男sdfsdf女</button>
+    </div>
+    <script src="./vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script>
+      var vm = new Vue({
+          el:'#app',
+          data:function () {
+              return {
+                  msg:'hahah'
+              }
+          },
+          methods:{
+              hello:function () {
+                axios.get('http://localhost:3000/user').then(
+                    function (response) {
+                        console.log(response)
+                    }
+                ).catch(function (err) {
+                    console.log(err)
+                })
+              },
+              world:function () {
+                  axios.get('http://localhost:3000/user',{
+                    params:{
+                        id:12
+                    }
+                  }).then(function (response) {
+                    console.log(response)
+                  }).catch(function (err) {
+                    console.log(err)
+                  })
+              },
+              haha:function () {
+                  axios.post('http://localhost:3000/user',{"name":"sdoifsoidf","id":234})
+                    .then(function (response) {
+                        console.log(response)
+                  }).catch(function (err) {
+                    console.log(err)
+                  })
+              }
+          }
+      })
+    </script>
+</body>
+</html>

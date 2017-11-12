@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <h1>v-model的使用</h1>
+        <h1>基础用法</h1>
+        <input type="text" v-model="msg">
+        <textarea name="" v-model="msg" id="" cols="30" rows="10"></textarea>
+
+
+        <h1>单选</h1>
+        <input type="radio" v-model="sex" value="1"> 男
+        <input type="radio" v-model="sex" value="2"> 女
+
+
+        <h1>多选   一个</h1>
+        <input type="checkbox" v-model="isTrue">  你是好孩子嘛?
+
+
+        <h1>多选  多个</h1>
+        <input type="checkbox" value="01" v-model="hobby"> 吃饭
+        <input type="checkbox" value="02" v-model="hobby"> 睡觉
+        <input type="checkbox" value="03" v-model="hobby"> 打豆豆
+        <input type="checkbox" value="04" v-model="hobby"> 老人
+        <input type="checkbox" value="05" v-model="hobby"> 男人
+        <input type="checkbox" value="06" v-model="hobby"> 女人
+
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+      var vm = new Vue({
+          el:'#app',
+          data:function () {
+              return {
+                msg:'我是中国人',
+                sex:2,
+                isTrue:false,
+                hobby:[
+                    '03','04'
+                ]
+              }
+          }
+      })
+    </script>
+</body>
+</html>

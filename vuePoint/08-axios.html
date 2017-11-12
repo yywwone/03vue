@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="hello">按钮</button>
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <!-- 引入axios -->
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: function () {
+                return {
+
+                }
+            },
+
+            // vscode中有一个很好的插件  可以模拟请求
+            // json-server
+            // 这个插件使用的步骤: 
+            // 1.npm安装:　　npm install json-server --save
+            // 2. 配置package.json文件
+            //          "scripts": {
+            //              "dev" : "json-server ./db.json  --watch"
+            //          },
+            //     3. 调用当前配置好的命令
+
+            methods: {
+                hello: function () {
+                    // 进行请求
+                    //  axios.get('http://localhost:3000/user')
+                    //     .then(function (response) {
+                    //         console.log(response)
+                    //     })
+                    //     .catch(function (err) {
+                    //         console.log('axios页面请求出错')
+                    //     })
+
+                    // 进行请求
+                    //  axios.get('http://localhost:3000/user',{
+                    //      params:{
+                    //          age:18
+                    //      }
+                    //  })
+                    //     .then(function (response) {
+                    //         console.log(response)
+                    //     })
+                    //     .catch(function (err) {
+                    //         console.log('axios页面请求出错')
+                    //     })
+
+                    // POST请求
+                    axios.post('http://localhost:3000/user', {
+                            "name": "Fred",
+                            "id":20
+                        })
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

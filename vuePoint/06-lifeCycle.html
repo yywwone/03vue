@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button v-on:click="hello">按钮</button>
+        <input type="text" v-model="msg">
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 钩子方法
+        // vue生命周期的钩子方法触发的条件是vue实例化对象了
+        // 1. vue的生命周期开始执行
+      var vm = new Vue({
+          el: '#app',
+          data: function () {
+              return {
+                  msg:'haha'
+              }
+          },
+          methods:{
+            hello: function () {
+
+            }
+          },
+          // 2.beforeCreate方法是在实例化对象代理data,methods,computed等属性之前,
+          // 调用的方法
+          beforeCreate: function () {
+            console.log('beforeCreate')
+            console.log(this.msg)
+          },
+          // 3.created方法是在beforeCreate方法调用之后调用的方法
+          // 在这个方法里面,vm实例化对象已经对data,methods,computed等属性的内容进行了代理
+          created: function () {
+            console.log('created')
+            console.log(this.msg)
+          },
+          // 4.程序执行的时候,其实是先从dom中获取vue语法规定的指令或者是{{}},这个时候没有对其进行解析
+          // vue加载完成之后,会读取这些语法,进行解析,但是解析之前会调用这个方法.
+          beforeMount:function () {
+              window.alert(11111)
+            console.log('beforeMount')
+          },
+          // 5.网界面上挂载之后,会调用mounted方法
+          mounted:function () {
+            console.log('mounted')
+          },
+          // 6.如果一旦有数据的改变,就会走更新的方法,再走更新方法之前
+          // 会调用下面的方法
+          beforeUpdate:function () {
+              window.alert(11111)
+            console.log('beforeUpdate')
+          },
+          // 7.beforeUpdate走完之后,会调用这个方法:
+          updated:function () {
+            console.log('updated')
+          },
+          // 8.在当前组件被干掉之前调用的方法
+          beforeDestroy:function () {
+              console.log('beforeDestroy')
+          },
+          // 9.当当前组件被销毁以后调用的方法
+          destroyed : function () {
+            console.log('destroyed')
+          }
+      })
+    </script>
+</body>
+</html>
